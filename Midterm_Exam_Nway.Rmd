@@ -48,3 +48,13 @@ ggsave(filename = "Plot.png", plot = plot,
        width = 10, height = 4, units = "in", bg="white") 
 ```
 
+##4
+###a) Putting the code in github
+
+###b) Percentage of males and females by class
+
+```{r}
+table1(~ as.factor(Sex)| Pclass, data = titanic_csv)
+```
+
+###c) Provide the link of Github repository
