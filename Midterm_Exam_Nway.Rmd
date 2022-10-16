@@ -1,0 +1,50 @@
+---
+title: "Midterm_Exam_Nway"
+author: "Nway"
+date: "2022-10-16"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Open Package
+
+```{r}
+pacman::p_load(readr, ggplot2, table1)
+```
+
+##3
+###a)Importing the dataset
+
+```{r}
+titanic_csv <-
+ read_csv(
+   "https://github.com/kijohnson/Data/raw/main/titanic.csv")
+```
+
+###b)Determining the median age for by passenger class
+
+```{r}
+# Factoring Pclass first
+table1(~ Age| as.factor(Pclass), data = titanic_csv)
+```
+
+Median age of passengers in passenger class 1 was 38.5 years, in class 2 was 29 years and in class 3 was 24 years.
+
+###c)a plot that shows medians, spread of data, and outliers for the continuous variable age according to passenger class
+
+```{r}
+plot<-ggplot(data = titanic_csv, aes(x = as.factor(Pclass), y = Age)) +
+  geom_boxplot() +
+  labs(x = "Passenger Class Type", y = "Age of the passengers",  title = "Passengers' Age Distribution By Passenger Class")
+plot
+```
+
+```{r}
+# save the plot
+ggsave(filename = "Plot.png", plot = plot,
+       width = 10, height = 4, units = "in", bg="white") 
+```
+
